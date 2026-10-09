@@ -346,12 +346,18 @@ The project created the following visualizations using Matplotlib:
 **Purpose:** To examine how failure rates vary across mileage groups.
 
 **Key Insight:** Failure rates generally increase as mileage increases, with the highest observed rate in the 150–200k group.
+### Monthly Failure Trend
 
+![Monthly Failure Trend](Visualizations/monthly_failure_trend.png)
+
+**Purpose:** To analyse monthly vehicle failure rates throughout 2024.
+
+**Key Insight:** January recorded approximately 20.01% failure rate, while March recorded approximately 18.01%.
 ---
 
 ### Make-wise Failure Rate
 
-![Make-wise Failure Rate](Visualizations/category_analysis.png)
+![Make-wise Failure Rate](Visualizations/make_failure_rate.png)
 
 **Purpose:** To compare observed failure rates across vehicle makes.
 
@@ -371,7 +377,6 @@ The project created the following visualizations using Matplotlib:
 
 ## Project Structure
 
-```text
 Commercial Vehicle Reliability & Failure Pattern Analysis/
 │
 ├── README.md
@@ -383,23 +388,30 @@ Commercial Vehicle Reliability & Failure Pattern Analysis/
 │   │   ├── ...
 │   │   └── test_result_202412.csv
 │   │
-│   └── cleaned_datasets.csv/
-│       └── cleaned_dataset.csv
+│   └── cleaned_2024_final.csv
 │
 ├── Notebook/
-│   └── Commercial_Vehicle_Reliability_Failure_Pattern_Analysis.ipynb
+│   └── EDA_2024.ipynb
 │
-├── Python/
-│   ├── data_loading.py
+├── python/
 │   ├── data_cleaning.py
-│   ├── exploratory_analysis.py
-│   └── data_visualization.py
+│   └── exploratory_analysis.py
 │
 ├── Visualizations/
 │   ├── distribution_analysis.png
 │   ├── trend_analysis.png
-│   ├── category_analysis.png
-│   └── correlation_analysis.png
+│   ├── age_failure_rate.png
+│   ├── make_failure_rate.png
+│   ├── fuel_failure_rate.png
+│   ├── test_class_failure_rate.png
+│   ├── model_failure_rate.png
+│   ├── postcode_failure_rate.png
+│   ├── monthly_failure_trend.png
+│   ├── colour_failure_rate.png
+│   ├── cylinder_capacity_failure_rate.png
+│   ├── test_type_failure_rate.png
+│   ├── correlation_analysis.png
+│   └── category_analysis.png
 │
 └── Documentation/
-    └── Project_Report.pdfs
+    └── Project_Report.pdf

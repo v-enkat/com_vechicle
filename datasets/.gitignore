@@ -1,3 +1,13 @@
-cleaned_datasets.csv
-raw_dataset.csv
-venv
+# Cleaned dataset
+datasets/cleaned_2024_final.csv
+
+# Raw datasets
+datasets/raw_dataset.csv/
+
+# Python virtual environment
+venv/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc

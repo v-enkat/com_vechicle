@@ -1,0 +1,8 @@
+datasets/*.csv
+datasets/raw_dataset.csv/
+datasets/cleaned_datasets.csv/
+datasets/*.zip
+venv/
+.venv/
+__pycache__/
+*.pyc
