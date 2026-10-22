@@ -27,13 +27,13 @@ for chunk in pd.read_csv(
     )
 
     temp = chunk.groupby("mileage_group", observed=False)["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     stats.append(temp)
 
-mileage = pd.concat(stats).groupby(level=0).sum()
+mileage = pd.concat(stats).groupby(level=0, observed=False).sum()
 mileage["failure_rate"] = mileage["failures"] / mileage["total"] * 100
 
 print("\n2024 MILEAGE VS FAILURE RATE")
@@ -74,13 +74,13 @@ for chunk in pd.read_csv(
     )
 
     temp = chunk.groupby("age_group", observed=False)["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     age_stats.append(temp)
 
-age = pd.concat(age_stats).groupby(level=0).sum()
+age = pd.concat(age_stats).groupby(level=0, observed=False).sum()
 age["failure_rate"] = age["failures"] / age["total"] * 100
 
 print("\n2024 VEHICLE AGE VS FAILURE RATE")
@@ -111,13 +111,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["make"])
 
     temp = chunk.groupby("make")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     make_stats.append(temp)
 
-make = pd.concat(make_stats).groupby(level=0).sum()
+make = pd.concat(make_stats).groupby(level=0, observed=False).sum()
 
 make["failure_rate"] = make["failures"] / make["total"] * 100
 
@@ -151,13 +151,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["fuel_type"])
 
     temp = chunk.groupby("fuel_type")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     fuel_stats.append(temp)
 
-fuel = pd.concat(fuel_stats).groupby(level=0).sum()
+fuel = pd.concat(fuel_stats).groupby(level=0, observed=False).sum()
 
 fuel["failure_rate"] = fuel["failures"] / fuel["total"] * 100
 
@@ -192,13 +192,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["test_class_id"])
 
     temp = chunk.groupby("test_class_id")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     class_stats.append(temp)
 
-test_class = pd.concat(class_stats).groupby(level=0).sum()
+test_class = pd.concat(class_stats).groupby(level=0, observed=False).sum()
 
 test_class["failure_rate"] = (
     test_class["failures"] / test_class["total"] * 100
@@ -235,13 +235,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["model"])
 
     temp = chunk.groupby("model")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     model_stats.append(temp)
 
-model = pd.concat(model_stats).groupby(level=0).sum()
+model = pd.concat(model_stats).groupby(level=0, observed=False).sum()
 
 model["failure_rate"] = (
     model["failures"] / model["total"] * 100
@@ -278,13 +278,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["postcode_area"])
 
     temp = chunk.groupby("postcode_area")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     postcode_stats.append(temp)
 
-postcode = pd.concat(postcode_stats).groupby(level=0).sum()
+postcode = pd.concat(postcode_stats).groupby(level=0, observed=False).sum()
 
 postcode["failure_rate"] = (
     postcode["failures"] / postcode["total"] * 100
@@ -324,13 +324,13 @@ for chunk in pd.read_csv(
     chunk["month"] = chunk["test_date"].dt.month
 
     temp = chunk.groupby("month")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     month_stats.append(temp)
 
-monthly = pd.concat(month_stats).groupby(level=0).sum()
+monthly = pd.concat(month_stats).groupby(level=0, observed=False).sum()
 
 monthly["failure_rate"] = (
     monthly["failures"] / monthly["total"] * 100
@@ -370,13 +370,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["colour"])
 
     temp = chunk.groupby("colour")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     colour_stats.append(temp)
 
-colour = pd.concat(colour_stats).groupby(level=0).sum()
+colour = pd.concat(colour_stats).groupby(level=0, observed=False).sum()
 
 colour["failure_rate"] = (
     colour["failures"] / colour["total"] * 100
@@ -427,13 +427,13 @@ for chunk in pd.read_csv(
     )
 
     temp = chunk.groupby("capacity_group", observed=False)["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     capacity_stats.append(temp)
 
-capacity = pd.concat(capacity_stats).groupby(level=0).sum()
+capacity = pd.concat(capacity_stats).groupby(level=0, observed=False).sum()
 
 capacity["failure_rate"] = (
     capacity["failures"] / capacity["total"] * 100
@@ -468,13 +468,13 @@ for chunk in pd.read_csv(
     chunk = chunk.dropna(subset=["test_type"])
 
     temp = chunk.groupby("test_type")["test_result"].agg(
-        total="count",
+        total=lambda x: x.isin(["P", "F", "PRS"]).sum(),
         failures=lambda x: (x == "F").sum()
     )
 
     test_type_stats.append(temp)
 
-test_type = pd.concat(test_type_stats).groupby(level=0).sum()
+test_type = pd.concat(test_type_stats).groupby(level=0, observed=False).sum()
 
 test_type["failure_rate"] = (
     test_type["failures"] / test_type["total"] * 100
